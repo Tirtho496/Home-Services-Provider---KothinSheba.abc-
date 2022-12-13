@@ -37,6 +37,7 @@ class ServiceController extends Controller
         $service->description = $request->input('description');
         $service->status = $request->input('status') == TRUE?'1':'0';
         $service->Popular = $request->input('popular') == TRUE?'1':'0';
+        $service->price = $request->input('price');
         $service->meta_title = $request->input('meta_title');
         $service->meta_keywords = $request->input('meta_keywords');
         $service->meta_desc = $request->input('meta_description');
@@ -71,6 +72,7 @@ class ServiceController extends Controller
         $category->description = $request->input('description');
         $category->status = $request->input('status') == TRUE?'1':'0';
         $category->Popular = $request->input('popular') == TRUE?'1':'0';
+        $service->price = $request->input('price');
         $category->meta_title = $request->input('meta_title');
         $category->meta_keywords = $request->input('meta_keywords');
         $category->meta_desc = $request->input('meta_description');

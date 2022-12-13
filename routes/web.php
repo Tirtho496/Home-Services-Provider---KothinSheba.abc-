@@ -1,6 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TechnicianController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +30,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('service/{slug}',[App\Http\Controllers\Frontend\FrontendController::class,'viewService']);
 Route::get('tech-reg',[App\Http\Controllers\TechnicianController::class,'index']);
 Route::post('tech-register-submit',[App\Http\Controllers\TechnicianController::class,'submit_info']);
+Route::post('go-technician',[App\Http\Controllers\Frontend\FrontendController::class,'book']);
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('cart',[CartController::class,'viewCart']);
+    // Route::get('checkout',[CheckoutController::class,'index']);
+    // Route::post('place-order',[CheckoutController::class, 'placeOrder']);
+    // Route::get('wishlist',[WishlistController::class,'index']);
+    // Route::get('complete-payment',[PaymentController::class, 'index']);
+    
+});
 
 Route::group(['middleware'=>['auth','checkAdmin']],function (){
     Route::get('/dashboard','App\Http\Controllers\Admin\DashboardController@index');
@@ -39,6 +54,8 @@ Route::group(['middleware'=>['auth','checkAdmin']],function (){
     Route::get('technician-panel','App\Http\Controllers\Admin\TechnicianController@index');
     Route::get('deny/{id}','App\Http\Controllers\Admin\TechnicianController@delete');
     Route::get('verify/{id}','App\Http\Controllers\Admin\TechnicianController@verify');
+    Route::get('timeslots','App\Http\Controllers\SlotController@index');
+    Route::post('insert-slot','App\Http\Controllers\SlotController@insert');
     
     
  });

@@ -16,6 +16,7 @@
             <div class="row">
                 <div class="col-md-4 border-right">
                     <img src="{{asset('assets/uploads/service/'.$serv->image)}}" class="w-100" alt="">
+                    <label class="badge bg-success" style="margin:5px; padding:5px;">Tk.{{$serv->price}}</label>
                 </div>
 
                 <div class="col-md-4 border-right">
@@ -23,15 +24,38 @@
                     <div class="row">
                         <form action="{{url('go-technician')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="col-md-12">
-                            <input type = "text" size="30" class="form-control" id="datepicker">
+                        <div class="col-md-12" style="margin-bottom:5px;">
+                            <input type = "text" size="30" class="form-control" id="datepicker" name="date">
                         </div>
+
+                        <div class = "col-md-12" style="margin-bottom:5px;">
+                            <select class="form-select" name="slot" aria-label="Default select example">
+                                <option value="">Select Slot</option>
+                                @foreach($slot as $item)
+                                    <option value = "{{$item->id}}">{{$item->start_time}} - {{$item->end_time}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class = "col-md-12" style="margin-bottom:5px;">
+                            <select class="form-select" name="technician" aria-label="Default select example">
+                                <option value="">Select Technician</option>
+                                @foreach($technician as $item)
+                                    <option value = "{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
                         <div class="col-md-12">
-                            <button type="submit" class = "btn btn-primary">Submit</button>
+                            <input type="hidden" value="{{$serv->id}}" name="service_id">
+                            <button type="submit" class="btn btn-success me-3 float-start add-to-cart">Add to Cart <i class="fa fa-shopping-cart"></i> </button>
+                            
                         </div>
                         </form>
                     </div>
                 </div>
+
+                
             </div>
                 
         </div>

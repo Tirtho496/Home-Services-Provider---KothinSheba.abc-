@@ -22,6 +22,11 @@
                     <label for="">Description</label>
                     <textarea name="description" cols="30" rows="5" class="form-control"></textarea>
                 </div>
+
+                <div class = "col-md-6">
+                    <label for="">Price</label>
+                    <textarea name="price" cols="30" rows="5" class="form-control"></textarea>
+                </div>
                 <div class = "col-md-6 mb-3">
                     <label for="">Status</label>
                     <input type="checkbox" name="status">

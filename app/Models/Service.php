@@ -16,6 +16,7 @@ class Service extends Model
         'description',
         'status',
         'Popular',
+        'price',
         'image',
         'meta_title',
         'meta_desc',
