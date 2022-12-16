@@ -31,7 +31,7 @@ Route::get('service/{slug}',[App\Http\Controllers\Frontend\FrontendController::c
 Route::get('tech-reg',[App\Http\Controllers\TechnicianController::class,'index']);
 Route::post('tech-register-submit',[App\Http\Controllers\TechnicianController::class,'submit_info']);
 Route::post('go-technician',[App\Http\Controllers\Frontend\FrontendController::class,'book']);
-Route::post('customer-profile',[App\Http\Controllers\Frontend\FrontendController::class,'customer_profile']);
+Route::get('customer-profile',[App\Http\Controllers\Frontend\FrontendController::class,'customer_profile']);
 
 
 Route::middleware(['auth'])->group(function(){
