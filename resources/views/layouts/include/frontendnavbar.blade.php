@@ -29,7 +29,7 @@ use App\Models\Cart;
 
                             
                         @endphp
-                        <li class="nav-item active"><a class = "nav-link" href="{{ url('/home') }}">Profile</a></li>
+                        <li class="nav-item active"><a class = "nav-link" href="{{ url('customer-profile') }}">Profile</a></li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i><span class ="badge badge-pill w_count" style="color:crimson; font-weight:bold;">{{$total_c}}</span></a>
 

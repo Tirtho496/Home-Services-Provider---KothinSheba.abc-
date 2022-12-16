@@ -103,4 +103,10 @@ class FrontendController extends Controller
         
     }
 
+    public function customer_profile()
+    {
+
+        return redirect('frontend.customer');
+    }
+
 }
