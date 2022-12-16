@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('photo');
             $table->string('nid');
             $table->string('nid_photo');
-            $table->varchar('verified')->default('0');
+            $table->string('verified')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });
