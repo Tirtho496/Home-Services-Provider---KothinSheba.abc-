@@ -7,9 +7,8 @@ Cart
 
 @section('content')
 
-
-    hello I am customer
     @if($items->count()>0)
+    
             <div class="card-body">
                 <table class="table">
                     <thead>
@@ -21,13 +20,8 @@ Cart
                     </tr>
                     </thead>
                     <tbody>
-                    @php
-                        $total = 0;
-                    @endphp
+     
                     @foreach($items as $item)
-                    @php
-                        $total+=$item->service->price
-                    @endphp
                     <tr>
                         <td>{{$item->service->name}}</td>
                         <td>{{$item->date}}</td>
@@ -36,21 +30,40 @@ Cart
                     </tr>
                     
                     </tbody>
-                @endforeach
-            </div>
+                </table>
+                    @endforeach
+</div>
+<div>
 
-            <div class="card-footer">
-                <h6>Total Price: BDT {{$total}}
-
-                <a href="{{url('checkout')}}" class="btn btn-success float-end">Proceed to Checkout</a></h6>
+                    @if($items->count()>0)
+                    @foreach($items as $item)
+                    <article>
+                    <div class="ttop">
+                    <!--img class="card-img-top" src="..." alt="Card image cap"-->
+                        <div class="card-body">
+                            <p> </p>
+                            <h2 class="card-title upper">{{$item->service->name}}</h2>
+                            <p class="card-text upper"><b>By: {{$item->technician->name}}</b></p>
+                            <p class="card-text upper "><b>Date: {{$item->date}}</b></p>
+                            <p class="card-text upper"><b>From <br>{{$item->slot->start_time}}<br> </p> <p class="card-text upper">To <br> {{$item->slot->end_time}}</b></p>
+                            <!--a href="#" class="btn btn-primary">Go somewhere</a-->
+                        </div>
+                    </div>
+                    </article>
+                    @endforeach
+                    @endif
             </div>
-        
             @else
                 <div class="card-body">
                     <h2>Empty Cart<i class="fa fa-shopping-cart"></i></h2>
                     <a href="{{url('/')}}" class="btn btn-success">Return Home</a>
                 </div>
             @endif
+
+
+
+
+
 @yield('content')
 
 @section('scripts')
