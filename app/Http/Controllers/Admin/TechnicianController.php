@@ -23,6 +23,14 @@ class TechnicianController extends Controller
         $technician->verified = '1';
         $technician->update();
 
+        $user = new User();
+        $user->name = $technician->name;
+        $user->email = $technician->email;
+        $user->password = $technician->password;
+        $user->role_as = '2';
+
+        $user->save();
+
         return redirect('/dashboard')->with('status','Technician Verified');
     }
 
