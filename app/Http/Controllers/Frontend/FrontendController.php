@@ -29,7 +29,7 @@ class FrontendController extends Controller
             $serv = $service->where('slug',$slug)->first();
             $serv_id = $serv->id;
             $slot = Slot::where('service_id',$serv_id)->get();
-            $technician = Technician::where('service_id',$serv_id)->get();
+            $technician = Technician::where('service_id',$serv_id)->where('verified','1')->get();
             
             return view('frontend.viewService',compact('service','serv','slot','technician'));
         }
@@ -46,11 +46,35 @@ class FrontendController extends Controller
         $slot = $request->input('slot');
         $technician = $request->input('technician');
 
+        if(!$technician)
+        {
+            // return redirect('/')->with('status','Technician Not Selected');
+            $random = Technician::all()->random(1);
+            dd($random);
+            $check = BookedTechnician::whereDate('date','=',$fdate)
+                                ->where('slot', '=', $slot)
+                                ->where('technician', '=', $random->id)
+                                ->get();
+            while($check->count()>0)
+            {
+                $random = Technician::all()->random(1);
+                $check = BookedTechnician::whereDate('date','=',$fdate)
+                                    ->where('slot', '=', $slot)
+                                    ->where('technician', '=', $random->id)
+                                    ->get();
+            }
+            $technician = $random->id;
 
-        $check = BookedTechnician::whereDate('date','=',$fdate)
+        }
+        else{
+            $check = BookedTechnician::whereDate('date','=',$fdate)
                                 ->where('slot', '=', $slot)
                                 ->where('technician', '=', $technician)
                                 ->get();
+
+        }
+
+        
 
         
 

@@ -16,21 +16,12 @@ class CartController extends Controller
         return view('frontend.viewCart',compact('items'));
     }
 
-    // public function deleteitem(Request $request)
-    // {   
-    //     if(Auth::check())
-    //     {
-    //         $prod_id = $request->input('prod_id');
-    //         if(Cart::where('product_id',$prod_id)->where('user_id',Auth::id())->exists())
-    //         {
-    //             $cartItem = Cart::where('product_id',$prod_id)->where('user_id',Auth::id())->first();
-    //             $cartItem->delete();
+    public function cart_item_delete($id)
+    {
+        $cart = Cart::find($id);
 
-    //             return response()->json(['status' => "Product Deleted Successfully"]);
-    //         }
-    //     }
-    //     else{
-    //         return response()->json(['status'=>"Login to Continue"]);
-    //     }
-    // }
+        $cart->delete();
+        return redirect('cart')->with('status','Removed Item from cart');
+
+    }
 }

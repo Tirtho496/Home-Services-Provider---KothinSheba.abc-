@@ -22,6 +22,7 @@ Cart
                         <td>Date</td>
                         <td>Slot</td>
                         <td>Technician</td>
+                        <td></td>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@ Cart
                         <td>{{$item->date}}</td>
                         <td>{{$item->slot->start_time}}-{{$item->slot->end_time}}</td>
                         <td>{{$item->technician->name}}</td>
+                        <td><a href="{{url('delete-cart/'.$item->id)}}" class="btn btn-danger">Delete</a></td>
                     </tr>
                     
                     </tbody>
@@ -88,7 +90,7 @@ Cart
                   });
                   }
                   
-                </script>
+                </script>--}
     
     <script>
         
