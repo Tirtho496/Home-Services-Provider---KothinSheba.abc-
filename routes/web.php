@@ -63,3 +63,6 @@ Route::group(['middleware'=>['auth','checkAdmin']],function (){
     
     
  });
+
+ Route::get('tech-dashboard/{id}','App\Http\Controllers\Technician\TechnicianDashboardController@tech');
+ Route::get('view-orders/{id}','App\Http\Controllers\Technician\TechnicianDashboardController@orders');

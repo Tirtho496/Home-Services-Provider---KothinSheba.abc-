@@ -22,6 +22,7 @@ return new class extends Migration
             $table->tinyInteger('Popular');
             $table->string('price');
             $table->string('image');
+            $table->string('location');
             $table->string('meta_title');
             $table->string('meta_desc');
             $table->string('meta_keywords');
