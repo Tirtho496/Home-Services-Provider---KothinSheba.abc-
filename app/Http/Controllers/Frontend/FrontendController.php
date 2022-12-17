@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Cart;
 use App\Models\Slot;
+use App\Models\Order;
 use App\Models\Service;
 use App\Models\Technician;
 use Illuminate\Http\Request;
@@ -106,7 +107,8 @@ class FrontendController extends Controller
     public function customer_profile()
     {
 
-        return redirect('frontend.customer');
+        $items = Order::where('user_id',Auth::id())->get();
+        return view('frontend.customer',compact('items'));
     }
 
 }
