@@ -124,19 +124,19 @@ Checkout
                             <form>
                                 <div class="form-group owner">
                                     <label for="owner">Name on Card</label>
-                                    <input type="text" class="form-control" id="owner" name="cardname" required>
+                                    <input type="text" class="form-control" id="owner" name="cardname">
                                 </div>
                                 <div class="form-group CVV">
                                     <label for="cvv">CVV</label>
-                                    <input type="text" class="form-control" id="cvv" name="cvv" required>
+                                    <input type="text" class="form-control" id="cvv" name="cvv">
                                 </div>
                                 <div class="form-group" id="card-number-field">
                                     <label for="cardNumber">Card Number</label>
-                                    <input type="text" class="form-control" id="cardNumber" name="cardNo" required>
+                                    <input type="text" class="form-control" id="cardNumber" name="cardNo">
                                 </div>
                                 <div class="form-group" id="expiration-date">
                                     <label>Expiration Date</label>
-                                    <select required>
+                                    <select>
                                         <option value="01">January</option>
                                         <option value="02">February </option>
                                         <option value="03">March</option>
@@ -150,7 +150,7 @@ Checkout
                                         <option value="11">November</option>
                                         <option value="12">December</option>
                                     </select>
-                                    <select required>
+                                    <select>
                                         <option value="16"> 2022</option>
                                         <option value="17"> 2023</option>
                                         <option value="18"> 2024</option>
