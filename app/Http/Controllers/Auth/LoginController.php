@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Models\User;
 use App\Models\Cart;
+use App\Models\Technician;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+//use App\Http\Controllers\TechnicianController;
 
 class LoginController extends Controller
 {
@@ -39,6 +42,11 @@ class LoginController extends Controller
         {
             return redirect('/')->with('status','Logged in successfully');
         }
+        elseif(Auth::user()->role_as == '2')
+        {
+            return redirect('tech-dashboard/'.Auth::user()->id)->with('status','Logged in successfully');
+        }
+        
     }
     /**
      * Create a new controller instance.
@@ -49,4 +57,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /*protected function guard()
+    {
+        return Auth::guard('technician');
+    }*/
 }

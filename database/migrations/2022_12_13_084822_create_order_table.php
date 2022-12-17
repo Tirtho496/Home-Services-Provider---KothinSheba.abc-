@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('district');
             $table->string('division');
             $table->tinyInteger('status')->default('0'); //1 if shipped, //2 if delivered
-            $table->tineInteger('paystatus'); //0 if unpaid, 1 if paid
+            $table->tinyInteger('paystatus'); //0 if unpaid, 1 if paid
             $table->integer('total_price');
             $table->string('tracking_no');
             $table->timestamps();
