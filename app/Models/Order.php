@@ -16,6 +16,18 @@ class Order extends Model
         'date',
         'slot_id',
         'technician_id',
+        'fname',
+        'lname',
+        'phone',
+        'email',
+        'address',
+        'city',
+        'district',
+        'division',
+        'status',
+        'paystatus',
+        'total_price',
+        'tracking_no',
     ];
 
     public function service()
