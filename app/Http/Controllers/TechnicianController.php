@@ -18,6 +18,7 @@ class TechnicianController extends Controller
     public function submit_info(Request $request)
     {
         $technician = new Technician();
+        
         if($request->hasFile('photo'))
         {
             $file = $request->file('photo');

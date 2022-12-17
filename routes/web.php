@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\TechnicianController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -32,12 +33,14 @@ Route::get('tech-reg',[App\Http\Controllers\TechnicianController::class,'index']
 Route::post('tech-register-submit',[App\Http\Controllers\TechnicianController::class,'submit_info']);
 Route::post('go-technician',[App\Http\Controllers\Frontend\FrontendController::class,'book']);
 Route::get('customer-profile',[App\Http\Controllers\Frontend\FrontendController::class,'customer_profile']);
+Route::post('delete-cart/{id}',[App\Http\Controllers\Frontend\CartController::class,'cart_item_delete']);
 
 
 Route::middleware(['auth'])->group(function(){
     Route::get('cart',[CartController::class,'viewCart']);
-    // Route::get('checkout',[CheckoutController::class,'index']);
-    // Route::post('place-order',[CheckoutController::class, 'placeOrder']);
+    Route::get('delete-cart/{id}',[CartController::class,'cart_item_delete']);
+    Route::get('checkout',[CheckoutController::class,'index']);
+    Route::post('place-order',[CheckoutController::class, 'placeOrder']);
     // Route::get('wishlist',[WishlistController::class,'index']);
     // Route::get('complete-payment',[PaymentController::class, 'index']);
 });
