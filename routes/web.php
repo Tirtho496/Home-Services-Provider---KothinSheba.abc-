@@ -34,6 +34,8 @@ Route::post('tech-register-submit',[App\Http\Controllers\TechnicianController::c
 Route::post('go-technician',[App\Http\Controllers\Frontend\FrontendController::class,'book']);
 Route::get('customer-profile',[App\Http\Controllers\Frontend\FrontendController::class,'customer_profile']);
 Route::post('delete-cart/{id}',[App\Http\Controllers\Frontend\CartController::class,'cart_item_delete']);
+Route::get('product_list',[FrontendController::class, 'productList']);
+Route::post('searchproduct',[FrontendController::class, 'searchProduct']);
 
 
 Route::middleware(['auth'])->group(function(){
