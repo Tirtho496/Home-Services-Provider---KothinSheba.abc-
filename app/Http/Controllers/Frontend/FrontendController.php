@@ -152,8 +152,25 @@ class FrontendController extends Controller
         }
         else{
             return redirect()->back();
-        }
-        
+        } 
     }
 
+    public function Emergencybook(Request $request)
+    {
+        // return redirect('/')->with('status','Technician Not Selected');
+        $random = Technician::all()->random(1);
+        //dd($random);
+        $check = BookedTechnician::where('technician', '=', $random[0]->id)
+                            ->get();
+
+        while($check->count()>0)
+        {
+            $random = Technician::all()->random(1);
+            $check = BookedTechnician::where('technician', '=', $random[0]->id)
+                                ->get();
+        }
+        $technician = $random[0]->id;
+
+        dd($technician);
+    }
 }
