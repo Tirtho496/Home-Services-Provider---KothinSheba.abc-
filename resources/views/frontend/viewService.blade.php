@@ -25,12 +25,12 @@
                         <form action="{{url('go-technician')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12" style="margin-bottom:5px;">
-                            <input type = "text" size="30" class="form-control" id="datepicker" name="date">
+                            <input type = "text" size="30" class="form-control" id="datepicker" name="date" required>
                         </div>
 
                         <div class = "col-md-12" style="margin-bottom:5px;">
-                            <select class="form-select" name="slot" aria-label="Default select example">
-                                <option value="">Select Slot</option>
+                            <select class="form-select" name="slot" aria-label="Default select example" required>
+                                <option value="" >Select Slot</option>
                                 @foreach($slot as $item)
                                     <option value = "{{$item->id}}">{{$item->start_time}} - {{$item->end_time}}</option>
                                 @endforeach
@@ -56,11 +56,12 @@
                 
                 <div class="col-md-4 border-right">
                 <div class="row">
-                    <h5>Emergency </h5>
+                    <h5>Emergency Service!</h5>
                     <form>
                         <div class="col-md-12">
                             <input type="hidden" value="{{$serv->id}}" name="service_id">
-                            <button type="submit" class="btn btn-success me-3 float-start add-to-wishlist" style="background-color:Red">Emergency Service</button>
+                            <!-- <a href="{{url('delete-cart/'.$item->i)}}"style=" background-color:Red" class="btn btn-danger">Book Now</a> -->
+                            <a href="{{url('book-emergencycart/'.$item->i)}}"style=" background-color:Red" class="btn btn-danger">Book Now</a>
                         </div>
                     </form>
                 </div>
