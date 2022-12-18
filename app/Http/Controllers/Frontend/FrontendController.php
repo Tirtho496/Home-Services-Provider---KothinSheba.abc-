@@ -88,6 +88,7 @@ class FrontendController extends Controller
             {
                 
                 return redirect('/')->with('status','Technician Not Availabe');
+                    
             }
             else
             {
