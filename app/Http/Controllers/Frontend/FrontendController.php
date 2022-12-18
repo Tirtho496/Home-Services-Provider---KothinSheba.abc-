@@ -158,19 +158,23 @@ class FrontendController extends Controller
     public function Emergencybook(Request $request)
     {
         // return redirect('/')->with('status','Technician Not Selected');
+
+
+        // return redirect()->back()->with("status","No products matched with search");
         $random = Technician::all()->random(1);
-        //dd($random);
-        $check = BookedTechnician::where('technician', '=', $random[0]->id)
-                            ->get();
 
-        while($check->count()>0)
-        {
-            $random = Technician::all()->random(1);
-            $check = BookedTechnician::where('technician', '=', $random[0]->id)
-                                ->get();
-        }
         $technician = $random[0]->id;
+        $service = Service::where('id',$request->service_id)->first();
+        $item = new Cart();
+        if(Cart::where('service_id',$service->id)->exists())
+        {
+            return response()->json(['status'=>$service->name."Already added to cart"]);
+        }
+        $item->service_id = $service->id;
+        $item->user_id= Auth::id();
+        $item->technician_id = $technician;
+        $item->save();
 
-        dd($technician);
+
     }
 }

@@ -36,7 +36,7 @@ Route::get('customer-profile',[App\Http\Controllers\Frontend\FrontendController:
 Route::post('delete-cart/{id}',[App\Http\Controllers\Frontend\CartController::class,'cart_item_delete']);
 Route::get('product_list',[FrontendController::class, 'productList']);
 Route::post('searchproduct',[FrontendController::class, 'searchProduct']);
-Route::get('book-emergencycart/',[App\Http\Controllers\Frontend\FrontendController::class, 'Emergencybook']);
+Route::get('book-emergencycart/{id}',[App\Http\Controllers\Frontend\FrontendController::class, 'Emergencybook']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('cart',[CartController::class,'viewCart']);

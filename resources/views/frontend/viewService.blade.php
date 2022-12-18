@@ -61,7 +61,7 @@
                         <div class="col-md-12">
                             <input type="hidden" value="{{$serv->id}}" name="service_id">
                             <!-- <a href="{{url('delete-cart/'.$item->i)}}"style=" background-color:Red" class="btn btn-danger">Book Now</a> -->
-                            <a href="{{url('book-emergencycart/'.$item->i)}}"style=" background-color:Red" class="btn btn-danger">Book Now</a>
+                            <a href="{{url('book-emergencycart/'.$serv->id)}}"style=" background-color:Red" class="btn btn-danger">Book Now</a>
                         </div>
                     </form>
                 </div>
