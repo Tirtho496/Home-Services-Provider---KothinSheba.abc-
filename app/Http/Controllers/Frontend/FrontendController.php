@@ -51,20 +51,20 @@ class FrontendController extends Controller
         {
             // return redirect('/')->with('status','Technician Not Selected');
             $random = Technician::all()->random(1);
-            dd($random);
+            //dd($random);
             $check = BookedTechnician::whereDate('date','=',$fdate)
                                 ->where('slot', '=', $slot)
-                                ->where('technician', '=', $random->id)
+                                ->where('technician', '=', $random[0]->id)
                                 ->get();
             while($check->count()>0)
             {
                 $random = Technician::all()->random(1);
                 $check = BookedTechnician::whereDate('date','=',$fdate)
                                     ->where('slot', '=', $slot)
-                                    ->where('technician', '=', $random->id)
+                                    ->where('technician', '=', $random[0]->id)
                                     ->get();
             }
-            $technician = $random->id;
+            $technician = $random[0]->id;
 
         }
         else{
@@ -134,6 +134,26 @@ class FrontendController extends Controller
 
         $items = Order::where('user_id',Auth::id())->get();
         return view('frontend.customer',compact('items'));
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $product = $request->search;
+
+        if($product != "")
+        {
+            $item = Service::where("name","LIKE","%$product%")->first();
+            if($item){
+                return redirect('service/'.$item->slug);
+            }
+            else{
+                return redirect()->back()->with("status","No products matched with search");
+            }
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
 
 }
