@@ -49,13 +49,22 @@
                         <div class="col-md-12">
                             <input type="hidden" value="{{$serv->id}}" name="service_id">
                             <button type="submit" class="btn btn-success me-3 float-start add-to-cart">Add to Cart <i class="fa fa-shopping-cart"></i> </button>
-                            
                         </div>
                         </form>
                     </div>
                 </div>
-
                 
+                <div class="col-md-4 border-right">
+                <div class="row">
+                    <h5>Emergency </h5>
+                    <form>
+                        <div class="col-md-12">
+                            <input type="hidden" value="{{$serv->id}}" name="service_id">
+                            <button type="submit" class="btn btn-success me-3 float-start add-to-wishlist" style="background-color:Red">Emergency Service</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
             </div>
                 
         </div>
